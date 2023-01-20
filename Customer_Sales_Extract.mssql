@@ -1,38 +1,39 @@
-SELECT 
-		c.CustomerID, 
-		c.BillPostalCode, 
-		c.BillStateProvCode, 
-		c.BillCountryCode, 
-		CASE WHEN Classification = '' THEN 'Salvage' 
-		ELSE Classification
-		END AS LOB, 
-		CASE WHEN MarketplaceName = 'eBay Motors Fixed Price US' THEN 'eBay'
-				 WHEN MarketplaceName = 'Amazon Seller Central - US' THEN 'Amazon' 
-				 WHEN MarketplaceName = 'Magento' THEN 'PSN-Web' 
-				 WHEN MarketplaceName = 'Checkout Direct' THEN 'Direct Checkout' 
-				 ELSE 'OTHER' 
-	  END AS Market, 
-	
+SELECT
+		c.CustomerID,
+		LEFT(c.BillPostalCode,5) AS BillPostalCode,
+		c.BillStateProvCode,
+		c.BillCountryCode,
+		CASE WHEN Classification IN ('Rebuilt Transmission', 'Rebuilt Engine Stock', 'Rebuilt Engine') THEN 'Rebuilt-Engines'
+				 WHEN Classification IN ('NOS Parts', 'Transmission Parts', 'Engine Parts') THEN 'NOS-Rebuilt-Parts'
+				 WHEN Classification = '' OR Classification IN ('Frame','Tires','Wheels') THEN 'Salvage'
+		ELSE 'Misc'
+		END AS LOB,
+		CASE WHEN MarketplaceName IN ('eBay Motors Fixed Price US', 'Amazon Seller Central - US') THEN 'eBay'
+				 WHEN MarketplaceName = 'Magento' THEN 'Website'
+				 WHEN MarketplaceName = 'Checkout Direct' THEN 'Counter'
+				 ELSE 'OTHER'
+	  END AS Market,
+
 		CAST ( OrderNumber AS VARCHAR ) AS ChannelOrderID,
 		CAST(OrderDate AS DATE) AS OrderDate,
 		CAST(Quantity AS Int) AS Quantity,
 		UnitPrice,
-		Quantity * UnitPrice AS Total, 
+		Quantity * UnitPrice AS Total,
 		SKU,
-		NAME AS Title, 
-		CASE WHEN NAME LIKE '%Polaris%' THEN 'Polaris' 
-				 WHEN NAME LIKE '%Honda%' THEN 'Honda' 
+		NAME AS Title,
+		CASE WHEN NAME LIKE '%Polaris%' THEN 'Polaris'
+				 WHEN NAME LIKE '%Honda%' THEN 'Honda'
 				 WHEN NAME LIKE '%Kawasaki%' THEN 'Kawasaki'
 				 WHEN NAME LIKE '%Yamaha%' THEN 'Yamaha'
 				 WHEN NAME LIKE '%Suzuki%' THEN 'Suzuki'
-				 WHEN NAME LIKE '%Can-Am%' OR NAME LIKE '%Can Am%' THEN 'Can-Am' 
-				 WHEN NAME LIKE '%John Deere%' THEN 'John Deere' 
-				 WHEN NAME LIKE '%Arctic%' OR NAME LIKE '%Actic%'THEN 'Arctic Cat' 
-				 WHEN NAME LIKE '%Kubota%' OR NAME LIKE '%Actic%'THEN 'Kubota' 
-				 WHEN NAME LIKE '%Bobcat%' OR NAME LIKE '%Actic%'THEN 'Bobcat' 
-				 
-				 ELSE 'Other' 
-		END AS Brand 
+				 WHEN NAME LIKE '%Can-Am%' OR NAME LIKE '%Can Am%' THEN 'Can-Am'
+				 WHEN NAME LIKE '%John Deere%' THEN 'John Deere'
+				 WHEN NAME LIKE '%Arctic%' OR NAME LIKE '%Actic%'THEN 'Arctic Cat'
+				 WHEN NAME LIKE '%Kubota%' THEN 'Kubota'
+				 WHEN NAME LIKE '%Bobcat%' THEN 'Bobcat'
+
+				 ELSE ''
+		END AS Brand
 	FROM
 		[ShipWorks].[dbo].[OrderItem] oi
 		JOIN [Order] o ON o.OrderID = oi.OrderID
@@ -40,4 +41,4 @@ SELECT
 		JOIN dbo.ChannelAdvisorOrderItem caoi ON caoi.OrderItemID = oi.OrderItemID
 		JOIN dbo.Customer c  ON o.CustomerID = c.CustomerID
 		WHERE OrderDate > '2020-12-31'
-		ORDER BY customerID
+		ORDER BY customerID, OrderDate
