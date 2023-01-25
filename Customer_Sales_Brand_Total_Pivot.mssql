@@ -60,8 +60,8 @@ PIVOT(
         [Suzuki], 
         [Can-Am], 
         [John Deer], 
-				[Arctic Cat], 
-				[Kubota], 
-				[Bobcat],
-				[Other]) 
+		[Arctic Cat],
+		[Kubota],
+		[Bobcat],
+		[Other])
 ) AS pivot_table
