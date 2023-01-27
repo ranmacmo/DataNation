@@ -1,9 +1,16 @@
-# [Data Nation](https://github.com/ranmacmo/DataNation/blob/75586569058b2fe40f5bac9ad991b390779a0cf9/PSN_Data_Presentation.pdf)
+# [Data Nation](https://github.com/ranmacmo/DataNation/blob/f30f6e80958a11505348b585722381feb6c10620/PSN_Data_Presentation.pdf)
 ## Overview: For this project, we are working with PowerSportsNation, a power sports dealer located in Nebraska. PowerSportsNation provides quality used parts that are cheaper than retail. They have asked us to analyze their data for trends and provide possible business recommendations.
 
 ### Purpose: The purpose of this analysis is to analyze PowerSportsNation data to identify trends in the sales and marketing, as well as provide possible business recommendations. 
 
 We chose to work with PowerSportsNation because it provides our team an opportunity to work with real world data and provide true solutions/recommendations to improve a company.
+
+## About the Data
+PSN works with used parts that are sold across the world. To understand customer segmentation we took two years of customer order details per customer, such as customer ID, part brand, the market, and line of business. 
+
+In addition, to better understand customer segmentation, we needed to collect zip code demographics, such as zip code, latitude, and longitude. 
+
+Then we can merge all the data together to get a more comprehensive analysis of customer segmentation based on customer behavior and location demographics.
 
 ## Questions to answer: 
 1. What are the demographics and behaviors of customer segmentation? Can we develop marketing personas?
