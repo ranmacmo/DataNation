@@ -47,26 +47,26 @@ When we started with the customer dataset, we had a total 141,461 total rows and
 Once the data was merged together into one [dataset](https://github.com/ranmacmo/DataNation/blob/f4ecc2501f44d0fd0079ed439820d95423f9e387/data/Customer_data_merged.csv), we still needed to make some adjustments before we could compute the machine learning. Since we didn't need all the columns for machine learning, we created a new DataFrame containing only the following columns: Recency, Frequency, Monetary, Market Website total, and Market eBay total. Table 1. 
 
 ### Table 1
-![new_data_df]() 
+![new_data_df](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/new_data_df.png) 
 
 Now that we have our variables we want to run the machine learning on, we needed to normalize the data using the MinMaxScaler() function. After the data was normalized, we could then compute the KMeans function to generate an elbow curve to find the number of clusters needed for the analysis. When we ran the KMeans, our elbow curve indicated two clusters, Image 4. 
 
 ### Image 4: Elbow Curve
-![Elbow Curve]()
+![Elbow Curve](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/elbow_curve.png)
 
 Now that we know how many clusters we have, we calculated the predicted values and combined the predictions with the dataset, Table 2. 
 
 ### Table 2
-![data_df_scaled]()
+![data_df_scaled](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/data_df_scaled.png)
 
 Lastly, we can run a pairplot to compare the values between one another to visually see the clusters, Image 5. However, after computing the first pairplot, we decided to re-run the analysis using 3 clusters instead of 2, to see if their were additional clusters we might be missing, Image 6. 
 
 ### Image 5: 2 Cluster Comparison
-![2 cluster comparison]()
+![2 cluster comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/two_cluster.png)
 
 
 ### Image 6: 3 Cluster Comparison
-![3 cluster comparison]()
+![3 cluster comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/three_cluster.png)
 
 Looking at the cluster comparisons, you can see that there is signitficant clustering between Recency and the other variables. Indicating there were two signifcant groups for Recency on each variable. 
 
@@ -74,12 +74,14 @@ Looking at the cluster comparisons, you can see that there is signitficant clust
 Now that we have a little better understanding of the data, we decided to add in additional columns and run the machine learning again. This time, we added in all the brand total columns to add for the machine learning analysis. Then we scaled the data and ran another KMeans elbow curve, Image 7. For this elbow curve, we also increased our K range from (1, 10), to (1, 50) to make sure we have the best range to predict our possible number of clusters. 
 
 ### Image 7: Brands Elbow Curve
-![Brands Elbow Curve]()
+![Brands Elbow Curve](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/brand_elbow.png)
 
-After running the elbow curve, we concluded there are 4 clusters. Just like we did previously, we calculated the predicting values and combined the predications to the scaled dataset and computed the pairplot, Image 8. After adding in the brands to the machine learning, there was a lot more clustering between the variables. 
+After running the elbow curve, we concluded there are 4 clusters. Just like we did previously, we calculated the predicting values and combined the predications to the scaled dataset and computed the pairplot, Image 8. After adding in the brands to the machine learning, there was a lot more clustering between the variables. By looking at the comparisons, you can see that Recency still indicates the greatest clustering between the other variables. 
 
 ### Image 8: Brands Cluster Comparison
-![Brands Comparison]()
+![Brands Comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/brands4.png)
+
+For this analysis, we used Jupyter notebook to organize the data and run machine learning for clusterings. 
 
 ## Challenges
 One challenge we have faced so far is the limitations the team has to the data. Randy works for PSN so he has to pull all the data and remove identiable information before the remaining team can access the data. 
