@@ -1,4 +1,4 @@
-# [Data Nation](https://github.com/ranmacmo/DataNation/blob/f30f6e80958a11505348b585722381feb6c10620/PSN_Data_Presentation.pdf)
+# [Data Nation](https://github.com/ranmacmo/DataNation/blob/759b251978aa83ca9e3669e93ef8aba1c6091acc/PSN_Data_Presentation.pdf)
 ## Overview: For this project, we are working with PowerSportsNation, a power sports dealer located in Nebraska. PowerSportsNation provides quality used parts that are cheaper than retail. They have asked us to analyze their data for trends and provide possible business recommendations.
 
 ### Purpose: The purpose of this analysis is to analyze PowerSportsNation data to identify trends in the sales and marketing, as well as provide possible business recommendations. 
@@ -44,22 +44,22 @@ When we started with the customer dataset, we had a total 141,461 total rows and
 ![Merged Dataset](https://github.com/ranmacmo/DataNation/blob/f3f79096459f30ca11785ff1903a1effcad94f1b/images/merged_data.png)
 
 # Description of the data exploration phase of the project
-Once the data was merged together into one [dataset](https://github.com/ranmacmo/DataNation/blob/f4ecc2501f44d0fd0079ed439820d95423f9e387/data/Customer_data_merged.csv), we still needed to make some adjustments before we could compute the machine learning. Since we didn't need all the columns for machine learning, we created a new DataFrame containing only the following columns: Recency, Frequency, Monetary, Market Website total, and Market eBay total. Table 1. 
+Once the data was merged together into one [dataset](https://github.com/ranmacmo/DataNation/blob/f4ecc2501f44d0fd0079ed439820d95423f9e387/data/Customer_data_merged.csv), we wanted to get a brief understanding of the machine learning on a smaller scale. Therefore, we created a new DataFrame containing only the following columns: Recency, Frequency, Monetary, Market Website total, and Market eBay total. Table 1. We chose these columns because recency, frequency, and monetary are the main values that help us understand customer segmentation. Thus, we chose market website and eBay total's to get a general understanding of customer groups for website and eBay based on recency, frequency, and monetary.
 
 ### Table 1
 ![new_data_df](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/new_data_df.png) 
 
-Now that we have our variables we want to run the machine learning on, we needed to normalize the data using the MinMaxScaler() function. After the data was normalized, we could then compute the KMeans function to generate an elbow curve to find the number of clusters needed for the analysis. When we ran the KMeans, our elbow curve indicated two clusters, Image 4. 
+Now that we have our variables we want to run the machine learning on, we needed to normalize the data using the MinMaxScaler() function. After the data was normalized, we could then compute the KMeans function to generate an elbow curve to find the number of clusters needed for the analysis. When we ran the KMeans, our elbow curve indicated around two or three clusters, Image 4. 
 
 ### Image 4: Elbow Curve
 ![Elbow Curve](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/elbow_curve.png)
 
-Now that we know how many clusters we have, we calculated the predicted values and combined the predictions with the dataset, Table 2. 
+Since we know how many clusters we have, we calculated the predicted values and combined the predictions with the dataset, Table 2. 
 
 ### Table 2
 ![data_df_scaled](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/data_df_scaled.png)
 
-Lastly, we can run a pairplot to compare the values between one another to visually see the clusters, Image 5. However, after computing the first pairplot, we decided to re-run the analysis using 3 clusters instead of 2, to see if their were additional clusters we might be missing, Image 6. 
+Lastly, we can run a pairplot to compare the values between one another to visually see the clusters, Image 5. From Image 5, you can see that Recency is the strongest value in indicating groups on all the other values. However, after computing the first pairplot, we decided to re-run the analysis using 3 clusters instead of 2, to see if their were additional clusters we might be missing, Image 6. 
 
 ### Image 5: 2 Cluster Comparison
 ![2 cluster comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/two_cluster.png)
@@ -68,20 +68,20 @@ Lastly, we can run a pairplot to compare the values between one another to visua
 ### Image 6: 3 Cluster Comparison
 ![3 cluster comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/three_cluster.png)
 
-Looking at the cluster comparisons, you can see that there is signitficant clustering between Recency and the other variables. Indicating there were two signifcant groups for Recency on each variable. 
+Looking at the cluster comparisons, you can see that there is signitficant clustering between Recency and the other variables. Indicating there were three signifcant groups for Recency on each variable. 
 
 # Description of the analysis phase of the project
-Now that we have a little better understanding of the data, we decided to add in additional columns and run the machine learning again. This time, we added in all the brand total columns to add for the machine learning analysis. Then we scaled the data and ran another KMeans elbow curve, Image 7. For this elbow curve, we also increased our K range from (1, 10), to (1, 50) to make sure we have the best range to predict our possible number of clusters. 
+Now that we have a little better understanding of the data, we decided to add in additional columns and run the machine learning again. This time, we added in all the brand total columns for the machine learning analysis. Then we scaled the data and ran another KMeans elbow curve, Image 7. For this elbow curve, we also increased our K range from (1, 10), to (1, 50) to make sure we have the best range to predict our possible number of clusters. 
 
 ### Image 7: Brands Elbow Curve
 ![Brands Elbow Curve](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/brand_elbow.png)
 
-After running the elbow curve, we concluded there are 4 clusters. Just like we did previously, we calculated the predicting values and combined the predications to the scaled dataset and computed the pairplot, Image 8. After adding in the brands to the machine learning, there was a lot more clustering between the variables. By looking at the comparisons, you can see that Recency still indicates the greatest clustering between the other variables. 
+After running the elbow curve, we concluded there are about 4 clusters. Just like we did previously, we calculated the predicting values and combined the predications to the scaled dataset and computed the pairplot, Image 8. After adding in the brands to the machine learning, there was a lot more clustering between the variables. By looking at the comparisons, you can see that Recency still indicates the greatest clustering between the other variables. 
 
 ### Image 8: Brands Cluster Comparison
 ![Brands Comparison](https://github.com/ranmacmo/DataNation/blob/6626a307d3add38a77dd2aa0ee3f07e7c882ac21/images/brands4.png)
 
-For this analysis, we used Jupyter notebook to organize the data and run machine learning for clusterings. 
+For this analysis, we used Jupyter notebook to organize the data and run machine learning for clusterings. The language we used was Python, Pandas, KMeans, and Seaborn. 
 
 ## Challenges
 One challenge we have faced so far is the limitations the team has to the data. Randy works for PSN so he has to pull all the data and remove identiable information before the remaining team can access the data. 
