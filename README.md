@@ -83,6 +83,8 @@ After running the elbow curve, we concluded there are about 4 clusters. Just lik
 
 For this analysis, we used Jupyter notebook to organize the data and run machine learning for clusterings. The language we used was Python, Pandas, KMeans, and Seaborn. 
 
+Go to our [Tableau page](https://public.tableau.com/app/profile/randy.machacek/viz/CustomerSegmentation_16747875219150/Dashboard1) to see additional visualizations of the data. 
+
 ## Challenges
 One challenge we have faced so far is the limitations the team has to the data. Randy works for PSN so he has to pull all the data and remove identiable information before the remaining team can access the data. 
 
