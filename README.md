@@ -15,9 +15,9 @@ However, they are unaware of their customer segmentation or target audience. By 
 ## Approach
 PSN primary sells thier parts on either their [website](https://www.powersportsnation.com/) or on eBay. Therefore, we collected our data from the customer sales and census demographic data to compute our analysis. For analysis, we are looking at customer segmentation, to understand the customer groups for PSN and the revenue each group produces. Thus, Randy and I used a combination of RFM (recency, frequency, and monetary) statistical analysis as well as machine learning to answer the following questions and provide recommendations.  
 
-    1. Who are our core customers across the various markets?
+    i. Who are our core customers across the various markets?
 
-    1. Who are our core customers that the company should be reaching out to for business? 
+    ii. Who are our core customers that the company should be reaching out to for business? 
 
 ## About the Data
 Customer segmentation organizes groups based on shared characteristics, behaviors, or preferences. For the data, we acquired background data on customers to create customer personas as well as census demographic data. 
@@ -48,7 +48,7 @@ Once the data was merged together into one [dataset](https://github.com/ranmacmo
 Recency is how recent the customers purchased from PSN, frequency is the number of times the customer purchased in a given time period, and monetary is the total amount the customer spent. These variables are typically on a scale from 1 to 5, however, if you look at Image 3, you can see the recency scale is from 5 to 1. This is because we want a lower quartile, indicating the customer has made a recent purchase. Frequency and Monetary, we want higher values though to indicate a greater amount purchased and spent. 
 
 #### Image 3: RFM Ranking
-[rfm_ranking](https://github.com/ranmacmo/DataNation/blob/71e0616ad00e27ba47f67507874e0ee564b46af0/images/rfm_data_ranking.png)
+![rfm_ranking](https://github.com/ranmacmo/DataNation/blob/71e0616ad00e27ba47f67507874e0ee564b46af0/images/rfm_data_ranking.png)
 
 Before we ran the machine learning, we normalized the data using the MinMaxScaler() function. After the data was normalized, we then computed the KMeans function to generate an elbow curve to find the number of clusters needed for the analysis. When we ran the KMeans, our elbow curve indicated around two or four clusters, Image 4. 
 
@@ -74,15 +74,15 @@ Looking at customers that purchase off PSN's website, their champion customers m
 When you look at the customers that purchase off eBay though, hibernating customers make up 37% of the total customers that purchase off eBay, and 29% of the total revenue. Whereas champion customers only make up 6% of the total customers that purchase off eBay and 13% of the total revenue, Image 7. 
 
 #### Image 6: Website RFM Dollars
-[website](https://github.com/ranmacmo/DataNation/blob/585a164acf9baf139e1374b428622a57a85fafef/images/website_percentages.png)
+![website](https://github.com/ranmacmo/DataNation/blob/585a164acf9baf139e1374b428622a57a85fafef/images/website_percentages.png)
 
 #### Image 7: eBay RFM Dollars
-[ebay](https://github.com/ranmacmo/DataNation/blob/585a164acf9baf139e1374b428622a57a85fafef/images/ebay_percentages.png)
+![ebay](https://github.com/ranmacmo/DataNation/blob/585a164acf9baf139e1374b428622a57a85fafef/images/ebay_percentages.png)
 
 Getting a general understanding of which groups provide which total of the customers and revenue, it was important to also take a look at which of the groups expressed the most grouping from our machine learning. Therefore, Randy and I put the RFM data into Tableau, Image 8, to discover our main four groups are: can't lose, hibernating, loyal customers, and champions. 
 
 #### Image 8: RFM Top Segments
-[rfm segments](https://github.com/ranmacmo/DataNation/blob/09678960edae5aea2b9905b104b1a342f6bc8ef7/images/rfm_segments.png)
+![rfm segments](https://github.com/ranmacmo/DataNation/blob/09678960edae5aea2b9905b104b1a342f6bc8ef7/images/rfm_segments.png)
 
 It made since that hibernating, loyal customers, and champions were three of the groups, considering they make up the majority of the customers and sales. However, it was interesting to see the cutomer's can't lose as the forth group. This could be because these are customers that might have been in the other three groups, but due to inactivity of purchasing parts, put them in this category. 
 
