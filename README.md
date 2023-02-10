@@ -1,4 +1,4 @@
-# [Data Nation](https://github.com/ranmacmo/DataNation/blob/759b251978aa83ca9e3669e93ef8aba1c6091acc/PSN_Data_Presentation.pdf)
+# [Data Nation](https://github.com/ranmacmo/DataNation/blob/5412547a9937c7506f05e1c524bbd3830dc118ba/WashU_FinalProject.pdf)
 ## Overview: For this project, we are working with PowerSportsNation, a power sports dealer located in Nebraska. PowerSportsNation provides quality used parts that are cheaper than retail. They have asked us to analyze their data for trends and provide possible business recommendations.
 
 ### Purpose: The purpose of this analysis is to analyze PowerSportsNation data to identify trends in the sales and marketing, as well as provide possible business recommendations. 
@@ -95,6 +95,8 @@ Another recommendation is to review their current marketing. EBay, like other th
 
 ## Challenges
 The main challange that Randy and I faced with the PSN data, was cleaning the data and determining either what additional information we need, or that we could remove. When Randy and I started working on the machine learning, we discovered we were having issues with the data. Therefore, Randy would go back to review the data and collect what information we still needed from the company. 
+
+Another challange that Randy and I faced during this analysis is when we tried to run the machine learning to include the different brands. When we ran the Kmeans analysis, we didn't get very many clusters from the elbow curve. Therefore, when we ran the comparison plot, there were not very distinct groups. While we did not get much information from the machine learning on the brands, the brands would be good to look at for future analysis. 
 
 ## Limitations
 There are also some limitations to this analysis as well. One limitation is our data is dependent on the company/employees entering all the data information required/needed to run the analysis. Otherwise, it leaves us with NA's scewing our data or causing potential errors when running the analysis. The data is dependent upon other sources as well such as Amazon and ebay. These sources also need to provide all the data we need from sales that are made on their websites.
